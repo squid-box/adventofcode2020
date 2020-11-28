@@ -12,6 +12,7 @@
 		protected ProblemBase(int day)
 		{
 			Day = day;
+			Result = new Result(Day);
 		}
 
 		/// <summary>
@@ -19,11 +20,14 @@
 		/// </summary>
 		public int Day { get; }
 
-		public Result Result { get; protected set; }
+		/// <summary>
+		/// The <see cref="Result"/> of solving this problem.
+		/// </summary>
+		public Result Result { get; }
 
 		/// <summary>
-		/// 
+		/// Calculate the solution(s) to this problem.
 		/// </summary>
-		public abstract void CalculatePartOne();
+		public abstract void CalculateSolution();
 	}
 }

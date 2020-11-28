@@ -9,7 +9,7 @@
 			Console.WriteLine("Advent of Code 2020");
 			Console.WriteLine("Joel \"Squid-Box\" Ahlgren");
 
-			// Find all ProblemBase subclasses available, and run them all.
+			// TODO: Find all ProblemBase classes available, and run them all.
 		}
 	}
 }

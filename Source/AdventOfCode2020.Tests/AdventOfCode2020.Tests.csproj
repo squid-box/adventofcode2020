@@ -14,4 +14,8 @@
     <ProjectReference Include="..\AdventOfCode2020\AdventOfCode2020.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Problems\" />
+  </ItemGroup>
+
 </Project>

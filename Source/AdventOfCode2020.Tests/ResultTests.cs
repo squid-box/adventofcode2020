@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2020.Tests.Problems
+﻿namespace AdventOfCode2020.Tests
 {
 	using NUnit.Framework;
 
