@@ -9,12 +9,13 @@
 	public class Result
 	{
 		/// <summary>
-		/// 
+		/// Creates a new <see cref="Result"/>.
 		/// </summary>
-		/// <param name="day"></param>
+		/// <param name="day">The day this <see cref="Result"/> belongs to.</param>
 		public Result(int day)
 		{
 			Day = day;
+			AnswerPartOne = AnswerPartTwo = "Unsolved";
 		}
 
 		/// <summary>
@@ -35,7 +36,7 @@
 		/// <summary>
 		/// Gets the full answer of this <see cref="Result"/>.
 		/// </summary>
-		public string FullAnswer => string.Join(" | ", new []{AnswerPartOne, AnswerPartTwo}.Where(str => !string.IsNullOrWhiteSpace(str)));
+		public string FullAnswer => string.Join(" | ", new []{AnswerPartOne, AnswerPartTwo}.Where(str => !str.Equals("Unsolved", StringComparison.OrdinalIgnoreCase)));
 
 		/// <summary>
 		/// Gets the time it took to calculate part one of this <see cref="Result"/>.
@@ -51,5 +52,11 @@
 		/// Gets the time it took to calculate both parts of this <see cref="Result"/>.
 		/// </summary>
 		public TimeSpan FullTime => TimePartOne + TimePartTwo;
+
+		public override string ToString()
+		{
+			return $"{Day}:1| Answer: \"{AnswerPartOne}\" found in {TimePartOne}" + Environment.NewLine +
+			       $"{Day}:2| Answer: \"{AnswerPartTwo}\" found in {TimePartTwo}";
+		}
 	}
 }

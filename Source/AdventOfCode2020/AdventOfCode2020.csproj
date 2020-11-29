@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Folder Include="Inputs\" />
+    <Folder Include="Problems\" />
   </ItemGroup>
 
 </Project>
