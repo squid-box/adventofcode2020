@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2020", "Source\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2020.Tests", "Source\AdventOfCode2020.Tests\AdventOfCode2020.Tests.csproj", "{3D86B562-7B22-400D-B325-3FB5C3F4A86F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.ProblemCollector", "Source\AdventOfCode2020.ProblemCollector\AdventOfCode2020.ProblemCollector.csproj", "{141AAD06-993A-4114-9213-71854C846CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2020.ProblemCollector", "Source\AdventOfCode2020.ProblemCollector\AdventOfCode2020.ProblemCollector.csproj", "{141AAD06-993A-4114-9213-71854C846CA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
