@@ -1,3 +1,4 @@
 .vs/*
 Stage/*
 *.user
+/Source/*/obj/*

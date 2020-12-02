@@ -9,19 +9,19 @@
 	public class Program
 	{
 		private static readonly int Day = DateTime.UtcNow.Day;
-		private const string BranchName = "main";
 
 		public static void Main(string[] args)
         {
-	        if (args.Length != 3)
+	        if (args.Length != 4)
             {
-                Console.Error.WriteLine("You need to provide a session cookie, repository URL and repository path.");
+                Console.Error.WriteLine("You need to provide a session cookie, repository URL, repository path, and repository branch.");
                 Environment.Exit(1);
             }
 
             var sessionCookie = args[0];
             var repoUrl = args[1];
             var repoPath = args[2];
+            var branchName = args[3];
 
 			var pathToInputFile = Path.Combine("Inputs", $"{Day}.input");
 			var pathToProblemFile = Path.Combine("Source", "AdventOfCode2020", "Problems", $"Problem{Day}.cs");
@@ -45,9 +45,9 @@
             var originalWorkingDir = Environment.CurrentDirectory;
             Environment.CurrentDirectory = repoPath;
 
-            if (!PullLatestBranch())
+            if (!PullLatestBranch(branchName))
             {
-                Console.Error.WriteLine($"Couldn't pull latest {BranchName}.");
+                Console.Error.WriteLine($"Couldn't pull latest {branchName}.");
 	            Environment.Exit(4);
             }
 
@@ -135,11 +135,11 @@
             return ExecuteGitCommand($"clone {repoUrl} {repoPath}");
         }
 
-        private static bool PullLatestBranch()
+        private static bool PullLatestBranch(string branchName)
         {
-            Console.Out.WriteLine($"Check out and pull branch {BranchName}.");
+            Console.Out.WriteLine($"Check out and pull branch {branchName}.");
 
-            return ExecuteGitCommand($"checkout -B {BranchName} --track origin/{BranchName}") &&
+            return ExecuteGitCommand($"checkout -B {branchName} --track origin/{branchName}") &&
                    ExecuteGitCommand("pull");
         }
 

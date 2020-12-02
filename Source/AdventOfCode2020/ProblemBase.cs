@@ -1,6 +1,5 @@
 ﻿namespace AdventOfCode2020
 {
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
 

@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode2020.Utils
+﻿namespace AdventOfCode2020.Utils.Extensions
 {
     using System.Linq;
 

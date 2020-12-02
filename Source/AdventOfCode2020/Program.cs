@@ -26,8 +26,6 @@
 				Console.WriteLine(problem.Result);
 				Console.WriteLine();
 			}
-
-			Console.WriteLine("Execution completed, press any key to exit.");
 		}
 	}
 }
