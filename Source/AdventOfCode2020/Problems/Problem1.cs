@@ -1,6 +1,5 @@
 namespace AdventOfCode2020.Problems
 {
-    using System;
     using System.Globalization;
     using AdventOfCode2020.Utils.Extensions;
 
@@ -11,15 +10,14 @@ namespace AdventOfCode2020.Problems
     {
         public Problem1() : base(1) { }
 
-        public override void CalculateSolution()
+        protected override string SolvePartOne()
         {
-            var start = DateTime.Now;
-            Result.AnswerPartOne = FindAnswerOne(Input.ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
-            Result.TimePartOne = DateTime.Now - start;
+            return FindAnswerOne(Input.ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
+        }
 
-            start = DateTime.Now;
-            Result.AnswerPartTwo = FindAnswerTwo(Input.ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
-            Result.TimePartTwo = DateTime.Now - start;
+        protected override string SolvePartTwo()
+        {
+            return FindAnswerTwo(Input.ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
         }
 
         internal static int FindAnswerOne(int[] input, int targetSum)

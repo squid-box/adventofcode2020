@@ -1,5 +1,6 @@
 ﻿namespace AdventOfCode2020
 {
+    using System;
     using System.IO;
     using System.Linq;
 
@@ -36,9 +37,30 @@
 		/// </summary>
 		public Result Result { get; }
 
-		/// <summary>
-		/// Calculate the solution(s) to this problem.
-		/// </summary>
-		public abstract void CalculateSolution();
-	}
+        /// <summary>
+        /// Calculate the solution(s) to this problem.
+        /// </summary>
+        public void CalculateSolution()
+        {
+            var start = DateTime.Now;
+            Result.AnswerPartOne = SolvePartOne();
+            Result.TimePartOne = DateTime.Now - start;
+
+            start = DateTime.Now;
+            Result.AnswerPartTwo = SolvePartTwo();
+            Result.TimePartTwo = DateTime.Now - start;
+        }
+
+        /// <summary>
+        /// Calculates the first part of this problem.
+        /// </summary>
+        /// <returns>The answer for this part.</returns>
+        protected abstract string SolvePartOne();
+        
+        /// <summary>
+        /// Calculates the second part of this problem.
+        /// </summary>
+        /// <returns>The answer for this part.</returns>
+        protected abstract string SolvePartTwo();
+    }
 }

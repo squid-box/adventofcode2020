@@ -1,6 +1,5 @@
 namespace AdventOfCode2020.Problems
 {
-    using System;
     using System.Globalization;
     using System.Linq;
     using AdventOfCode2020.Utils.Extensions;
@@ -12,15 +11,16 @@ namespace AdventOfCode2020.Problems
     {
         public Problem2() : base(2) { }
 
-        public override void CalculateSolution()
+        /// <inheritdoc />
+        protected override string SolvePartOne()
         {
-            var start = DateTime.Now;
-            Result.AnswerPartOne = FindValidPasswords(Input).ToString(CultureInfo.InvariantCulture);
-            Result.TimePartOne = DateTime.Now - start;
+            return FindValidPasswords(Input).ToString(CultureInfo.InvariantCulture);
+        }
 
-            start = DateTime.Now;
-            Result.AnswerPartTwo = FindOtherValidPasswords(Input).ToString(CultureInfo.InvariantCulture);
-            Result.TimePartTwo = DateTime.Now - start;
+        /// <inheritdoc />
+        protected override string SolvePartTwo()
+        {
+            return FindOtherValidPasswords(Input).ToString(CultureInfo.InvariantCulture);
         }
 
         internal static int FindValidPasswords(string[] input)
