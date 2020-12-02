@@ -23,7 +23,7 @@
             var repoUrl = args[1];
             var repoPath = args[2];
 
-			var pathToInputFile = Path.Combine("Source", "AdventOfCode2020", "Inputs", $"{Day}.input");
+			var pathToInputFile = Path.Combine("Inputs", $"{Day}.input");
 			var pathToProblemFile = Path.Combine("Source", "AdventOfCode2020", "Problems", $"Problem{Day}.cs");
 			var pathToProblemTestFile = Path.Combine("Source", "AdventOfCode2020.Tests", "Problems", $"Problem{Day}Tests.cs");
 

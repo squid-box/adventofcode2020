@@ -1,6 +1,10 @@
 ﻿namespace AdventOfCode2020
 {
-	/// <summary>
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
+    /// <summary>
 	/// Base class for Problems.
 	/// </summary>
 	public abstract class ProblemBase
@@ -19,6 +23,14 @@
 		/// Day this problem belongs to.
 		/// </summary>
 		public int Day { get; }
+
+        /// <summary>
+        /// Gets the input for this problem.
+        /// </summary>
+        public string[] Input => File
+            .ReadAllLines($"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Inputs{Path.DirectorySeparatorChar}{Day}.input")
+            .Where(line => !string.IsNullOrEmpty(line))
+            .ToArray();
 
 		/// <summary>
 		/// The <see cref="Result"/> of solving this problem.
