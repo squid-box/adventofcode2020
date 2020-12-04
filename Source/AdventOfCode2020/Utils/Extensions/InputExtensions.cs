@@ -17,6 +17,11 @@
             return input.Select(int.Parse).ToArray();
         }
 
+        public static string[] WithoutEmptyLines(this string[] input)
+        {
+            return input.Where(line => !string.IsNullOrEmpty(line)).ToArray();
+        }
+
         public static int[] ConvertSeparatedListToInts(this string input, char separator)
         {
             return input.Split(separator).ConvertToInt();

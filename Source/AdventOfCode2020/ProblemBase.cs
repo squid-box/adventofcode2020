@@ -29,7 +29,6 @@
         /// </summary>
         public string[] Input => File
             .ReadAllLines($"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Inputs{Path.DirectorySeparatorChar}{Day}.input")
-            .Where(line => !string.IsNullOrEmpty(line))
             .ToArray();
 
 		/// <summary>

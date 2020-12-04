@@ -14,13 +14,13 @@ namespace AdventOfCode2020.Problems
         /// <inheritdoc />
         protected override string SolvePartOne()
         {
-            return FindValidPasswords(Input).ToString(CultureInfo.InvariantCulture);
+            return FindValidPasswords(Input.WithoutEmptyLines()).ToString(CultureInfo.InvariantCulture);
         }
 
         /// <inheritdoc />
         protected override string SolvePartTwo()
         {
-            return FindOtherValidPasswords(Input).ToString(CultureInfo.InvariantCulture);
+            return FindOtherValidPasswords(Input.WithoutEmptyLines()).ToString(CultureInfo.InvariantCulture);
         }
 
         internal static int FindValidPasswords(string[] input)

@@ -12,12 +12,12 @@ namespace AdventOfCode2020.Problems
 
         protected override string SolvePartOne()
         {
-            return FindAnswerOne(Input.ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
+            return FindAnswerOne(Input.WithoutEmptyLines().ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
         }
 
         protected override string SolvePartTwo()
         {
-            return FindAnswerTwo(Input.ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
+            return FindAnswerTwo(Input.WithoutEmptyLines().ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
         }
 
         internal static int FindAnswerOne(int[] input, int targetSum)

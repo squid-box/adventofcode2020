@@ -1,6 +1,6 @@
 namespace AdventOfCode2020.Problems
 {
-    using System.Globalization;
+    using AdventOfCode2020.Utils.Extensions;
 
     /// <summary>
     /// Solution for <a href="https://adventofcode.com/2020/day/3">Day 3</a>.
@@ -12,13 +12,13 @@ namespace AdventOfCode2020.Problems
         /// <inheritdoc />
         protected override string SolvePartOne()
         {
-            return CountHits(ParseInputToMap(Input), 3, 1).ToString();
+            return CountHits(ParseInputToMap(Input.WithoutEmptyLines()), 3, 1).ToString();
         }
 
         /// <inheritdoc />
         protected override string SolvePartTwo()
         {
-            var map = ParseInputToMap(Input);
+            var map = ParseInputToMap(Input.WithoutEmptyLines());
 
             long total = CountHits(map, 1, 1);
 
