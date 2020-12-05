@@ -1,6 +1,7 @@
 namespace AdventOfCode2020.Problems
 {
-    using AdventOfCode2020.Utils.Extensions;
+	using System.Collections.Generic;
+	using AdventOfCode2020.Utils.Extensions;
 
     /// <summary>
     /// Solution for <a href="https://adventofcode.com/2020/day/3">Day 3</a>.
@@ -30,11 +31,11 @@ namespace AdventOfCode2020.Problems
             return total.ToString();
         }
 
-        internal static bool[,] ParseInputToMap(string[] input)
+        internal static bool[,] ParseInputToMap(IList<string> input)
         {
-            var result = new bool[input[0].Length, input.Length];
+            var result = new bool[input[0].Length, input.Count];
 
-            for (var y = 0; y < input.Length; y++)
+            for (var y = 0; y < input.Count; y++)
             {
                 for (var x = 0; x < input[y].Length; x++)
                 {

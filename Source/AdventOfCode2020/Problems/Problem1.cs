@@ -1,6 +1,7 @@
 namespace AdventOfCode2020.Problems
 {
-    using System.Globalization;
+	using System.Collections.Generic;
+	using System.Globalization;
     using AdventOfCode2020.Utils.Extensions;
 
     /// <summary>
@@ -20,11 +21,11 @@ namespace AdventOfCode2020.Problems
             return FindAnswerTwo(Input.WithoutEmptyLines().ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
         }
 
-        internal static int FindAnswerOne(int[] input, int targetSum)
+        internal static int FindAnswerOne(IList<int> input, int targetSum)
         {
-            for (var i = 0; i < input.Length; i++)
+	        for (var i = 0; i < input.Count; i++)
             {
-                for (var j = 0; j < input.Length; j++)
+                for (var j = 0; j < input.Count; j++)
                 {
                     if (i == j)
                     {
@@ -41,13 +42,13 @@ namespace AdventOfCode2020.Problems
             return int.MinValue;
         }
 
-        internal static int FindAnswerTwo(int[] input, int targetSum)
+        internal static int FindAnswerTwo(IList<int> input, int targetSum)
         {
-            for (var i = 0; i < input.Length; i++)
+            for (var i = 0; i < input.Count; i++)
             {
-                for (var j = 0; j < input.Length; j++)
+                for (var j = 0; j < input.Count; j++)
                 {
-                    for (var k = 0; k < input.Length; k++)
+                    for (var k = 0; k < input.Count; k++)
                     {
                         if (i == j || i == k || j == k)
                         {

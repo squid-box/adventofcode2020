@@ -1,8 +1,10 @@
 namespace AdventOfCode2020.Problems
 {
-    using System.Globalization;
+	using System.Collections.Generic;
+	using System.Globalization;
     using System.Linq;
-    using AdventOfCode2020.Utils.Extensions;
+	using System.Text.RegularExpressions;
+	using AdventOfCode2020.Utils.Extensions;
 
     /// <summary>
     /// Solution for <a href="https://adventofcode.com/2020/day/2">Day 2</a>.
@@ -23,49 +25,54 @@ namespace AdventOfCode2020.Problems
             return FindOtherValidPasswords(Input.WithoutEmptyLines()).ToString(CultureInfo.InvariantCulture);
         }
 
-        internal static int FindValidPasswords(string[] input)
+        internal static IEnumerable<PasswordPolicy> ParseInput(ICollection<string> input)
         {
-            var valid = 0;
-
-            foreach (var line in input)
-            {
-                var lineTemp = line.Split(" ");
-                var rangeTemp = lineTemp[0].Split("-");
-                var rangeLower = rangeTemp[0].ToInt();
-                var rangeUpper = rangeTemp[1].ToInt();
-
-                if (lineTemp[2].Count(c => c.Equals(lineTemp[1][0])).IsWithin(rangeLower, rangeUpper))
-                {
-                    valid++;
-                }
-            }
-
-            return valid;
+	        return input.Select(data => new PasswordPolicy(data));
         }
 
-        internal static int FindOtherValidPasswords(string[] input)
+        internal static int FindValidPasswords(ICollection<string> input)
         {
-            var valid = 0;
+	        return ParseInput(input).Count(p => p.IsValid);
+        }
 
-            foreach (var line in input)
-            {
-                var lineTemp = line.Split(" ");
-                var positionsTemp = lineTemp[0].Split("-");
-                var positionOne = positionsTemp[0].ToInt() - 1;
-                var positionTwo = positionsTemp[1].ToInt() - 1;
-                var target = lineTemp[1][0];
+        internal static int FindOtherValidPasswords(ICollection<string> input)
+        {
+	        return ParseInput(input).Count(p => p.IsValidTwo);
+        }
+    }
 
-                var firstPosContainsTarget = lineTemp[2][positionOne].Equals(target);
-                var secondPosContainsTarget = lineTemp[2][positionTwo].Equals(target);
+    internal class PasswordPolicy
+    {
+	    public PasswordPolicy(string input)
+	    {
+            var regexMatches = Regex.Matches(input, @"(\d+)-(\d+) (\w): (\w*)");
 
-                if (firstPosContainsTarget && !secondPosContainsTarget ||
-                    secondPosContainsTarget && !firstPosContainsTarget)
-                {
-                    valid++;
-                }
-            }
+            LowerRange = regexMatches[0].Groups[1].Value.ToInt();
+            UpperRange = regexMatches[0].Groups[2].Value.ToInt();
+            TargetCharacter = regexMatches[0].Groups[3].Value[0];
+            Password = regexMatches[0].Groups[4].Value;
+        }
 
-            return valid;
+        public string Password { get; }
+
+        public char TargetCharacter { get; }
+
+        public int LowerRange { get; }
+
+        public int UpperRange { get; }
+
+        public bool IsValid => Password.Count(c => c.Equals(TargetCharacter)).IsWithin(LowerRange, UpperRange);
+
+        public bool IsValidTwo
+        {
+	        get
+	        {
+		        var firstPosContainsTarget = Password[LowerRange-1].Equals(TargetCharacter);
+		        var secondPosContainsTarget = Password[UpperRange-1].Equals(TargetCharacter);
+
+		        return firstPosContainsTarget && !secondPosContainsTarget ||
+		               secondPosContainsTarget && !firstPosContainsTarget;
+	        }
         }
     }
 }

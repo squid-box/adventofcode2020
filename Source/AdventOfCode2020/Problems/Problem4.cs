@@ -15,7 +15,7 @@ namespace AdventOfCode2020.Problems
         /// <inheritdoc />
         protected override string SolvePartOne()
         {
-            var passports = ParseInput(Input);
+            var passports = ParseInput(Input.ToList());
 
             return FindValidPassports(passports).ToString();
         }
@@ -23,7 +23,7 @@ namespace AdventOfCode2020.Problems
         /// <inheritdoc />
         protected override string SolvePartTwo()
         {
-            var passports = ParseInput(Input);
+            var passports = ParseInput(Input.ToList());
 
             return passports.Count(passport => passport.IsStrictlyValid).ToString();
         }
@@ -35,23 +35,21 @@ namespace AdventOfCode2020.Problems
 
 
 
-        internal static IEnumerable<Passport> ParseInput(string[] input)
+        internal static IEnumerable<Passport> ParseInput(IList<string> input)
         {
             var results = new List<Passport>();
             var passportData = new List<string>();
 
-            for (var i = 0; i < input.Length; i++)
+            foreach (var line in input)
             {
-                var line = input[i];
+	            if (string.IsNullOrEmpty(line))
+	            {
+		            results.Add(new Passport(passportData));
+		            passportData.Clear();
+		            continue;
+	            }
 
-                if (string.IsNullOrEmpty(line))
-                {
-                    results.Add(new Passport(passportData));
-                    passportData.Clear();
-                    continue;
-                }
-
-                passportData.Add(line);
+	            passportData.Add(line);
             }
 
             if (passportData.Count != 0)
@@ -132,21 +130,9 @@ namespace AdventOfCode2020.Problems
             IssueYear.Value.IsWithin(2010, 2020) &&
             ExpirationYear.Value.IsWithin(2020, 2030) &&
             IsHeightValid() &&
-            Regex.IsMatch(HairColor, @"#[a-z0-9]{6}") &&
-            IsEyeColorValid() &&
-            PassportId.Length == 9 && PassportId.All(char.IsDigit);
-
-        private bool IsEyeColorValid()
-        {
-            return !string.IsNullOrWhiteSpace(EyeColor) &&
-                   (EyeColor.Equals("amb") ||
-                   EyeColor.Equals("blu") ||
-                   EyeColor.Equals("brn") ||
-                   EyeColor.Equals("gry") ||
-                   EyeColor.Equals("grn") ||
-                   EyeColor.Equals("hzl") ||
-                   EyeColor.Equals("oth"));
-        }
+            Regex.IsMatch(HairColor, @"^#[a-z0-9]{6}$") &&
+            Regex.IsMatch(EyeColor, @"^(amb|blu|brn|gry|grn|hzl|oth)$") &&
+            Regex.IsMatch(PassportId, @"^[0-9]{9}$");
 
         private bool IsHeightValid()
         {

@@ -1,8 +1,8 @@
 ﻿namespace AdventOfCode2020
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
 
     /// <summary>
 	/// Base class for Problems.
@@ -24,12 +24,10 @@
 		/// </summary>
 		public int Day { get; }
 
-        /// <summary>
-        /// Gets the input for this problem.
-        /// </summary>
-        public string[] Input => File
-            .ReadAllLines($"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Inputs{Path.DirectorySeparatorChar}{Day}.input")
-            .ToArray();
+		/// <summary>
+		/// Gets the input for this problem.
+		/// </summary>
+		public ICollection<string> Input => File.ReadAllLines($"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Inputs{Path.DirectorySeparatorChar}{Day}.input");
 
 		/// <summary>
 		/// The <see cref="Result"/> of solving this problem.

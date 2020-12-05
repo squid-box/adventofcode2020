@@ -3,6 +3,7 @@
 	using System;
 	using System.Linq;
 	using System.Reflection;
+	using System.Threading.Tasks;
 
 	public class Program
 	{
@@ -18,12 +19,17 @@
 
 			Console.WriteLine($"Preparing to run {problems.Count} solutions.");
 
-			foreach (var problem in problems)
+			Parallel.ForEach(problems, problem =>
 			{
 				Console.WriteLine($"Solving problem #{problem.Day}...");
 				problem.CalculateSolution();
+			});
 
+			// Print results here, or they're disordered...
+			foreach (var problem in problems)
+			{
 				Console.WriteLine(problem.Result);
+				Console.WriteLine($"Day total: {problem.Result.FullTime}");
 				Console.WriteLine();
 			}
 		}

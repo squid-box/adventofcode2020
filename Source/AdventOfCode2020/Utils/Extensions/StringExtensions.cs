@@ -16,5 +16,23 @@
         {
             return Convert.ToInt32(source);
         }
+
+        /// <summary>
+        /// Converts a string into a nullable int.
+        /// </summary>
+        /// <param name="source">The string to convert.</param>
+        /// <returns>The string as an integer, or null.</returns>
+        public static int? ToNullableInt(this string source)
+        {
+	        try
+	        {
+		        return Convert.ToInt32(source);
+            }
+	        catch
+	        {
+		        return null;
+	        }
+	        
+        }
     }
 }

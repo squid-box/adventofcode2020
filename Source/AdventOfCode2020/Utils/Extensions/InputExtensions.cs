@@ -1,6 +1,7 @@
 ﻿namespace AdventOfCode2020.Utils.Extensions
 {
-    using System.Linq;
+	using System.Collections.Generic;
+	using System.Linq;
 
     /// <summary>
     /// Extensions for the problem input.
@@ -12,19 +13,14 @@
         /// </summary>
         /// <param name="input">Input to convert.</param>
         /// <returns>An array of integers.</returns>
-        public static int[] ConvertToInt(this string[] input)
+        public static IList<int> ConvertToInt(this ICollection<string> input)
         {
-            return input.Select(int.Parse).ToArray();
+            return input.Select(int.Parse).ToList();
         }
 
-        public static string[] WithoutEmptyLines(this string[] input)
+        public static IList<string> WithoutEmptyLines(this ICollection<string> input)
         {
-            return input.Where(line => !string.IsNullOrEmpty(line)).ToArray();
-        }
-
-        public static int[] ConvertSeparatedListToInts(this string input, char separator)
-        {
-            return input.Split(separator).ConvertToInt();
+            return input.Where(line => !string.IsNullOrEmpty(line)).ToList();
         }
     }
 }

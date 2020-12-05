@@ -67,7 +67,7 @@ namespace AdventOfCode2020.Tests.Problems
             Assert.AreEqual(2024, passport.ExpirationYear);
             Assert.AreEqual("brn", passport.EyeColor);
             Assert.AreEqual("760753108", passport.PassportId);
-            Assert.IsNull(passport.CountryId);
+            Assert.IsTrue(string.IsNullOrWhiteSpace(passport.CountryId));
             Assert.AreEqual("179cm", passport.Height);
         }
 
