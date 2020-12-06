@@ -1,6 +1,5 @@
 namespace AdventOfCode2020.Problems
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using AdventOfCode2020.Utils.Extensions;
@@ -13,13 +12,13 @@ namespace AdventOfCode2020.Problems
         public Problem5() : base(5) { }
 
         /// <inheritdoc />
-        protected override string SolvePartOne()
+        protected override object SolvePartOne()
         {
-            return ParseInput(Input.WithoutEmptyLines()).Max(p => p.Id).ToString();
+            return ParseInput(Input.WithoutEmptyLines()).Max(p => p.Id);
         }
 
         /// <inheritdoc />
-        protected override string SolvePartTwo()
+        protected override object SolvePartTwo()
         {
 	        var boardingPasses = 
 		        ParseInput(Input.WithoutEmptyLines())
@@ -30,7 +29,7 @@ namespace AdventOfCode2020.Problems
 			ids.ExceptWith(boardingPasses.Select(p => p.Id));
 
 			// TODO: Actually ensure there's just one (correct) ID in 'ids'.
-            return ids.First().ToString();
+            return ids.First();
         }
 
         internal static IEnumerable<BoardingPass> ParseInput(IList<string> input)

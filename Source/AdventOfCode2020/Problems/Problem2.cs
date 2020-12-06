@@ -1,7 +1,6 @@
 namespace AdventOfCode2020.Problems
 {
 	using System.Collections.Generic;
-	using System.Globalization;
     using System.Linq;
 	using System.Text.RegularExpressions;
 	using AdventOfCode2020.Utils.Extensions;
@@ -14,15 +13,15 @@ namespace AdventOfCode2020.Problems
         public Problem2() : base(2) { }
 
         /// <inheritdoc />
-        protected override string SolvePartOne()
+        protected override object SolvePartOne()
         {
-            return FindValidPasswords(Input.WithoutEmptyLines()).ToString(CultureInfo.InvariantCulture);
+            return FindValidPasswords(Input.WithoutEmptyLines());
         }
 
         /// <inheritdoc />
-        protected override string SolvePartTwo()
+        protected override object SolvePartTwo()
         {
-            return FindOtherValidPasswords(Input.WithoutEmptyLines()).ToString(CultureInfo.InvariantCulture);
+            return FindOtherValidPasswords(Input.WithoutEmptyLines());
         }
 
         internal static IEnumerable<PasswordPolicy> ParseInput(ICollection<string> input)

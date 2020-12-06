@@ -11,15 +11,15 @@ namespace AdventOfCode2020.Problems
         public Problem6() : base(6) { }
 
         /// <inheritdoc />
-        protected override string SolvePartOne()
+        protected override object SolvePartOne()
         {
-            return FindSumOfYesAnswers(Input).ToString();
+            return FindSumOfYesAnswers(Input);
         }
 
         /// <inheritdoc />
-        protected override string SolvePartTwo()
+        protected override object SolvePartTwo()
         {
-            return FindSumOfYesAnswersPartTwo(Input).ToString();
+            return FindSumOfYesAnswersPartTwo(Input);
         }
 
         internal static int FindSumOfYesAnswers(IEnumerable<string> input)

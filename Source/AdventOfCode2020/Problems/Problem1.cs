@@ -1,7 +1,6 @@
 namespace AdventOfCode2020.Problems
 {
 	using System.Collections.Generic;
-	using System.Globalization;
     using AdventOfCode2020.Utils.Extensions;
 
     /// <summary>
@@ -11,14 +10,14 @@ namespace AdventOfCode2020.Problems
     {
         public Problem1() : base(1) { }
 
-        protected override string SolvePartOne()
+        protected override object SolvePartOne()
         {
-            return FindAnswerOne(Input.WithoutEmptyLines().ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
+            return FindAnswerOne(Input.WithoutEmptyLines().ConvertToInt(), 2020);
         }
 
-        protected override string SolvePartTwo()
+        protected override object SolvePartTwo()
         {
-            return FindAnswerTwo(Input.WithoutEmptyLines().ConvertToInt(), 2020).ToString(CultureInfo.InvariantCulture);
+            return FindAnswerTwo(Input.WithoutEmptyLines().ConvertToInt(), 2020);
         }
 
         internal static int FindAnswerOne(IList<int> input, int targetSum)

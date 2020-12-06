@@ -13,19 +13,19 @@ namespace AdventOfCode2020.Problems
         public Problem4() : base(4) { }
 
         /// <inheritdoc />
-        protected override string SolvePartOne()
+        protected override object SolvePartOne()
         {
             var passports = ParseInput(Input.ToList());
 
-            return FindValidPassports(passports).ToString();
+            return FindValidPassports(passports);
         }
 
         /// <inheritdoc />
-        protected override string SolvePartTwo()
+        protected override object SolvePartTwo()
         {
             var passports = ParseInput(Input.ToList());
 
-            return passports.Count(passport => passport.IsStrictlyValid).ToString();
+            return passports.Count(passport => passport.IsStrictlyValid);
         }
 
         internal static int FindValidPassports(IEnumerable<Passport> passports)

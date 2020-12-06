@@ -40,11 +40,11 @@
         public void CalculateSolution()
         {
             var start = DateTime.Now;
-            Result.AnswerPartOne = SolvePartOne();
+            Result.AnswerPartOne = SolvePartOne().ToString();
             Result.TimePartOne = DateTime.Now - start;
 
             start = DateTime.Now;
-            Result.AnswerPartTwo = SolvePartTwo();
+            Result.AnswerPartTwo = SolvePartTwo().ToString();
             Result.TimePartTwo = DateTime.Now - start;
         }
 
@@ -52,12 +52,12 @@
         /// Calculates the first part of this problem.
         /// </summary>
         /// <returns>The answer for this part.</returns>
-        protected abstract string SolvePartOne();
+        protected abstract object SolvePartOne();
         
         /// <summary>
         /// Calculates the second part of this problem.
         /// </summary>
         /// <returns>The answer for this part.</returns>
-        protected abstract string SolvePartTwo();
+        protected abstract object SolvePartTwo();
     }
 }

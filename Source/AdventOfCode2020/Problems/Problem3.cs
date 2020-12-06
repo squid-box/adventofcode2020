@@ -11,24 +11,25 @@ namespace AdventOfCode2020.Problems
         public Problem3() : base(3) { }
 
         /// <inheritdoc />
-        protected override string SolvePartOne()
+        protected override object SolvePartOne()
         {
-            return CountHits(ParseInputToMap(Input.WithoutEmptyLines()), 3, 1).ToString();
+            return CountHits(ParseInputToMap(Input.WithoutEmptyLines()), 3, 1);
         }
 
         /// <inheritdoc />
-        protected override string SolvePartTwo()
+        protected override object SolvePartTwo()
         {
             var map = ParseInputToMap(Input.WithoutEmptyLines());
 
-            long total = CountHits(map, 1, 1);
+            long total = 1;
 
+            total *= CountHits(map, 1, 1);
             total *= CountHits(map, 3, 1);
             total *= CountHits(map, 5, 1);
             total *= CountHits(map, 7, 1);
             total *= CountHits(map, 1, 2);
 
-            return total.ToString();
+            return total;
         }
 
         internal static bool[,] ParseInputToMap(IList<string> input)

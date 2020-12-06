@@ -36,7 +36,7 @@
 		/// <summary>
 		/// Gets the full answer of this <see cref="Result"/>.
 		/// </summary>
-		public string FullAnswer => string.Join(" | ", new []{AnswerPartOne, AnswerPartTwo}.Where(str => !str.Equals("Unsolved", StringComparison.OrdinalIgnoreCase)));
+		public string FullAnswer => string.Join(" | ", new []{ AnswerPartOne, AnswerPartTwo }.Where(str => !str.Equals("Unsolved", StringComparison.OrdinalIgnoreCase)));
 
 		/// <summary>
 		/// Gets the time it took to calculate part one of this <see cref="Result"/>.
