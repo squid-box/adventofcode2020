@@ -18,6 +18,11 @@
             return input.Select(int.Parse).ToList();
         }
 
+        public static IList<long> ConvertToLong(this ICollection<string> input)
+        {
+            return input.Select(long.Parse).ToList();
+        }
+
         public static IList<string> WithoutEmptyLines(this ICollection<string> input)
         {
             return input.Where(line => !string.IsNullOrEmpty(line)).ToList();
