@@ -48,13 +48,31 @@ namespace AdventOfCode2020.Problems
             return joltDifferences[1] * joltDifferences[3];
         }
 
-        internal static int FindPartTwo(IEnumerable<int> input)
+        internal static long FindPartTwo(IEnumerable<int> input)
         {
-            var valid = 0;
+	        var adapters = input.Append(0).OrderBy(i => i).ToList();
 
-            
+	        var possibilities = new long[adapters.Count];
+	        
+	        // Prepare first adapter (only one way to start).
+	        possibilities[0] = 1;
 
-            return valid;
+	        for (var i = 1; i < adapters.Count; i++)
+	        {
+		        for (var j = 0; j < i; j++)
+		        {
+                    // If jolt difference is within range
+			        if (adapters[i] - adapters[j] <= 3)
+			        {
+                        // Add possible ways to get to adapter 'i'.
+				        possibilities[i] += possibilities[j];
+			        }
+		        }
+	        }
+
+            // The possible ways to get to the last adapter is what we're looking for
+            // There's only one way from here to get to the device.
+	        return possibilities[adapters.Count-1];
         }
     }
 }

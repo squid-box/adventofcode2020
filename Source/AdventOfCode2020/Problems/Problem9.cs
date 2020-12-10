@@ -20,7 +20,8 @@ namespace AdventOfCode2020.Problems
         /// <inheritdoc />
         protected override object SolvePartTwo()
         {
-            return FindContiguousRangeMinMaxSum(Input.ConvertToLong().ToList(), 105950735);
+	        var target = FindFirstInvalidNumber(Input.ConvertToLong().ToList(), 25);
+            return FindContiguousRangeMinMaxSum(Input.ConvertToLong().ToList(), target);
         }
 
         internal static long FindFirstInvalidNumber(IList<long> input, int preambleSize)
