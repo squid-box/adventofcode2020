@@ -15,6 +15,7 @@
 			var problems = Assembly.GetExecutingAssembly().GetTypes()
 				.Where(type => type.IsSubclassOf(typeof(ProblemBase)))
 				.Select(problemType => (ProblemBase) Activator.CreateInstance(problemType))
+				.OrderBy(x => x?.Day)
 				.ToList();
 
 			Console.WriteLine($"Preparing to run {problems.Count} solutions.");
