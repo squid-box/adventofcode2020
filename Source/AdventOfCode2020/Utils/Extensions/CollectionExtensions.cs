@@ -4,9 +4,9 @@
 	using System.Linq;
 
     /// <summary>
-    /// Extensions for the problem input.
+    /// Extensions for the collections.
     /// </summary>
-    public static class InputExtensions
+    public static class CollectionExtensions
     {
         /// <summary>
         /// Converts the input from a collection of strings to a collection of integers.
