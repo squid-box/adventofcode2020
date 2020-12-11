@@ -61,17 +61,17 @@ namespace AdventOfCode2020.Problems
 	        {
 		        for (var j = 0; j < i; j++)
 		        {
-                    // If jolt difference is within range
+	                // If jolt difference is within range
 			        if (adapters[i] - adapters[j] <= 3)
 			        {
-                        // Add possible ways to get to adapter 'i'.
+	                    // Add possible ways to get to adapter 'i'.
 				        possibilities[i] += possibilities[j];
 			        }
 		        }
 	        }
 
-            // The possible ways to get to the last adapter is what we're looking for
-            // There's only one way from here to get to the device.
+	        // The possible ways to get to the last adapter is what we're looking for
+	        // There's only one way from here to get to the device.
 	        return possibilities[adapters.Count-1];
         }
     }
