@@ -1,7 +1,5 @@
 ﻿namespace AdventOfCode2020.Utils
 {
-    using Microsoft.VisualBasic.CompilerServices;
-
     public class Vector
     {
         public int X { get; }
@@ -24,6 +22,11 @@
             return new Vector(a.X - b.X, a.Y - b.Y);
         }
 
+        public static Vector operator *(Vector vector, int scalar)
+        {
+            return new Vector(vector.X * scalar, vector.Y * scalar);
+        }
+
         public override string ToString()
         {
             return $"({X},{Y})";
@@ -40,8 +43,8 @@
             return X.GetHashCode() + Y.GetHashCode();
         }
 
-        public static Vector Up => new Vector(0, -1);
-        public static Vector Down => new Vector(0, 1);
+        public static Vector Up => new Vector(0, 1);
+        public static Vector Down => new Vector(0, -1);
         public static Vector Left => new Vector(-1, 0);
         public static Vector Right => new Vector(1, 0);
     }
