@@ -18,7 +18,7 @@ namespace AdventOfCode2020.Tests.Problems
                 "mem[8] = 0"
             };
 
-            Assert.AreEqual(165, Problem14.FindPartOne(testInput));
+            Assert.AreEqual(165, Problem14.FindAnswer(testInput, true));
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace AdventOfCode2020.Tests.Problems
                 "mem[26] = 1"
             };
 
-            Assert.AreEqual(208, Problem14.FindPartTwo(testInput));
+            Assert.AreEqual(208, Problem14.FindAnswer(testInput, false));
         }
     }
 }
