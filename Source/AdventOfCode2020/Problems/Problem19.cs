@@ -1,5 +1,7 @@
 namespace AdventOfCode2020.Problems
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Solution for <a href="https://adventofcode.com/2020/day/19">Day 19</a>.
     /// </summary>
@@ -17,6 +19,11 @@ namespace AdventOfCode2020.Problems
         protected override object SolvePartTwo()
         {
             return "Unsolved";
+        }
+
+        internal static IEnumerable<string> FindValidMessages(IEnumerable<string> input)
+        {
+            return new List<string>();
         }
     }
 }
