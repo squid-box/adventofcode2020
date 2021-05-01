@@ -2,8 +2,9 @@
 {
 	using System;
 	using System.Linq;
+    using Spectre.Console;
 
-	/// <summary>
+    /// <summary>
 	/// Represents the results from calculating a days problem(s).
 	/// </summary>
 	public class Result
@@ -54,9 +55,22 @@
 		public TimeSpan FullTime => TimePartOne + TimePartTwo;
 
 		public override string ToString()
-		{
-			return $"{Day}:1| Answer: \"{AnswerPartOne}\" found in {TimePartOne}" + Environment.NewLine +
-			       $"{Day}:2| Answer: \"{AnswerPartTwo}\" found in {TimePartTwo}";
+        {
+            var answerPartOneFormat = AnswerPartOne.Equals("Unsolved") ? Color.Grey : Color.Yellow;
+            var answerPartTwoFormat = AnswerPartTwo.Equals("Unsolved") ? Color.Grey : Color.Yellow;
+
+            return $"[green]{Day}:1[/]| Answer: \"[{answerPartOneFormat}]{AnswerPartOne}[/]\" found in [{TimeBasedColor(TimePartOne)}]{TimePartOne}[/]" + Environment.NewLine +
+                   $"[green]{Day}:2[/]| Answer: \"[{answerPartTwoFormat}]{AnswerPartTwo}[/]\" found in [{TimeBasedColor(TimePartTwo)}]{TimePartTwo}[/]";
 		}
+
+        private Color TimeBasedColor(TimeSpan time)
+        {
+            if (time < TimeSpan.FromMilliseconds(250))
+            {
+                return Color.Lime;
+            }
+
+            return time < TimeSpan.FromMilliseconds(500) ? Color.Orange1 : Color.Red3;
+        }
 	}
 }
