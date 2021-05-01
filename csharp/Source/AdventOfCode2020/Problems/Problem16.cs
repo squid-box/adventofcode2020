@@ -1,5 +1,6 @@
 namespace AdventOfCode2020.Problems
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
@@ -33,7 +34,7 @@ namespace AdventOfCode2020.Problems
             return tickets.Select(ticket => ticket.ErrorRate(rules)).Sum();
         }
 
-        internal static int FindDepartureValueProduct(IEnumerable<Rule> rules, Ticket myTicket, IEnumerable<Ticket> tickets, string target)
+        internal static long FindDepartureValueProduct(IEnumerable<Rule> rules, Ticket myTicket, IEnumerable<Ticket> tickets, string target)
         {
             var validTickets = tickets.Where(ticket => ticket.Valid(rules)).Append(myTicket);
             var potentialFieldValues = new Dictionary<string, HashSet<int>>();
@@ -44,7 +45,7 @@ namespace AdventOfCode2020.Problems
 
                 for (var i = 0; i < myTicket.Fields.Count; i++)
                 {
-                    if (tickets.All(ticket => rule.Validate(ticket.Fields[i])))
+                    if (validTickets.All(ticket => rule.Validate(ticket.Fields[i])))
                     {
                         potential.Add(i);
                     }
@@ -54,7 +55,7 @@ namespace AdventOfCode2020.Problems
             }
 
             // Name: Index
-            var knownFields = new Dictionary<string, int>();
+            var knownFields = new Dictionary<string, long>();
 
             while (knownFields.Count < myTicket.Fields.Count)
             {
@@ -74,11 +75,11 @@ namespace AdventOfCode2020.Problems
 
             var departureIndexes = knownFields.Where(rule => rule.Key.StartsWith(target));
 
-            var product = 1;
+            long product = 1;
             
             foreach (var (_, value) in departureIndexes)
             {
-                product *= myTicket.Fields[value];
+                product *= myTicket.Fields[Convert.ToInt32(value)];
             }
 
             return product;

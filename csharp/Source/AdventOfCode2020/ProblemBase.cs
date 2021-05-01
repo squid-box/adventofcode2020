@@ -27,7 +27,7 @@
 		/// <summary>
 		/// Gets the input for this problem.
 		/// </summary>
-		public ICollection<string> Input => File.ReadAllLines($"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Inputs{Path.DirectorySeparatorChar}{Day}.input");
+		public ICollection<string> Input => File.ReadAllLines($"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Inputs{Path.DirectorySeparatorChar}{Day}.input");
 
 		/// <summary>
 		/// The <see cref="Result"/> of solving this problem.
