@@ -48,14 +48,14 @@ namespace AdventOfCode2020.Problems
 
         private readonly List<Vector> _directions = new List<Vector>
         {
-            Vector.Up,
-            Vector.Down,
-            Vector.Left,
-            Vector.Left + Vector.Up,
-            Vector.Left + Vector.Down,
-            Vector.Right,
-            Vector.Right + Vector.Up,
-            Vector.Right + Vector.Down,
+            Vector.North,
+            Vector.South,
+            Vector.West,
+            Vector.West + Vector.North,
+            Vector.West + Vector.South,
+            Vector.East,
+            Vector.East + Vector.North,
+            Vector.East + Vector.South,
         };
 
         private char [,] _positions;

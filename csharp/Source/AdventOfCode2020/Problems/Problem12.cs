@@ -93,16 +93,16 @@ namespace AdventOfCode2020.Problems
             switch (maneuver[0])
             {
                 case 'N':
-                    direction = Vector.Up * val;
+                    direction = Vector.North * val;
                     break;
                 case 'S':
-                    direction = Vector.Down * val;
+                    direction = Vector.South * val;
                     break;
                 case 'E':
-                    direction = Vector.Right * val;
+                    direction = Vector.East * val;
                     break;
                 case 'W':
-                    direction = Vector.Left * val;
+                    direction = Vector.West * val;
                     break;
                 case 'L':
                     CurrentDirection -= val;
@@ -113,10 +113,10 @@ namespace AdventOfCode2020.Problems
                 case 'F':
                     direction = CurrentDirection switch
                     {
-                        0 => Vector.Up * val,
-                        90 => Vector.Right * val,
-                        180 => Vector.Down * val,
-                        270 => Vector.Left * val,
+                        0 => Vector.North * val,
+                        90 => Vector.East * val,
+                        180 => Vector.South * val,
+                        270 => Vector.West * val,
                         _ => null
                     };
                     break;

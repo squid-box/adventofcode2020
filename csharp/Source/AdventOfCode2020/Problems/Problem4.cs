@@ -33,8 +33,6 @@ namespace AdventOfCode2020.Problems
             return passports.Count(passport => passport.IsValid);
         }
 
-
-
         internal static IEnumerable<Passport> ParseInput(IList<string> input)
         {
             var results = new List<Passport>();

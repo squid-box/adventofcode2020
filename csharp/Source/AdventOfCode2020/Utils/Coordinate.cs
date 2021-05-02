@@ -8,22 +8,28 @@
 
         public int Y { get; }
 
-        public Coordinate(int x, int y)
+        public int Z { get; }
+
+        public int W { get; }
+
+        public Coordinate(int x, int y, int z = 0, int w = 0)
         {
             X = x;
             Y = y;
+            Z = z;
+            W = w;
         }
 
         public override string ToString()
         {
-            return $"({X},{Y})";
+            return $"({X},{Y},{Z},{W})";
         }
 
         public override bool Equals(object obj)
         {
             if (obj is Coordinate otherCoordinate)
             {
-                return otherCoordinate.X.Equals(X) && otherCoordinate.Y.Equals(Y);
+                return otherCoordinate.X.Equals(X) && otherCoordinate.Y.Equals(Y) && otherCoordinate.Z.Equals(Z) && otherCoordinate.W.Equals(W);
             }
 
             return false;
@@ -31,7 +37,7 @@
 
         public override int GetHashCode()
         {
-            return X.GetHashCode() + Y.GetHashCode();
+            return X.GetHashCode() + Y.GetHashCode() + Z.GetHashCode() + W.GetHashCode();
         }
 
         public int CompareTo(object obj)
@@ -61,7 +67,12 @@
 
         public static Coordinate operator +(Coordinate a, Vector b)
         {
-            return new Coordinate(a.X + b.X, a.Y + b.Y);
+            return new Coordinate(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
+        }
+
+        public static Coordinate operator -(Coordinate a, Vector b)
+        {
+            return new Coordinate(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
         }
     }
 }
