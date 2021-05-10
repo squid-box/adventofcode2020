@@ -9,7 +9,7 @@ namespace AdventOfCode2020.Tests.Problems
         private readonly string[] _testInput =
         {
             ".#.",
-            "..#",
+            "..#",      
             "###"
         };
 
