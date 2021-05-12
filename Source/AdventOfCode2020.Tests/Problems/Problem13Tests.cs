@@ -21,7 +21,7 @@ namespace AdventOfCode2020.Tests.Problems
         [Test]
         public void TestPartTwo()
         {
-            Assert.AreEqual(1068788, Problem13.FindPartTwo(_testInput[1]));
+            Assert.AreEqual(1068781, Problem13.FindPartTwo(_testInput[1]));
             Assert.AreEqual(3417, Problem13.FindPartTwo("17,x,13,19"));
             Assert.AreEqual(754018, Problem13.FindPartTwo("67,7,59,61"));
             Assert.AreEqual(779210, Problem13.FindPartTwo("67,x,7,59,61"));

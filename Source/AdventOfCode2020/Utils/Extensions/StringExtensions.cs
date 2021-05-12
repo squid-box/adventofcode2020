@@ -18,6 +18,16 @@
         }
 
         /// <summary>
+        /// Converts a string into a long.
+        /// </summary>
+        /// <param name="source">The string to convert.</param>
+        /// <returns>The string as a long.</returns>
+        public static long ToLong(this string source)
+        {
+            return Convert.ToInt64(source);
+        }
+
+        /// <summary>
         /// Converts a string into a nullable int.
         /// </summary>
         /// <param name="source">The string to convert.</param>

@@ -14,12 +14,12 @@
 | [10](https://adventofcode.com/2020/day/10) | Adapter Array           | :star: :star: |
 | [11](https://adventofcode.com/2020/day/11) | Seating System          | :star: :star: |
 | [12](https://adventofcode.com/2020/day/12) | Rain Risk               | :star: :star: |
-| [13](https://adventofcode.com/2020/day/13) | Shuttle Search          | :star:        |
+| [13](https://adventofcode.com/2020/day/13) | Shuttle Search          | :star: :star: |
 | [14](https://adventofcode.com/2020/day/14) | Docking Data            | :star: :star: |
 | [15](https://adventofcode.com/2020/day/15) | Rambunctious Recitation | :star: :star: |
 | [16](https://adventofcode.com/2020/day/16) | Ticket Translation      | :star: :star: |
 | [17](https://adventofcode.com/2020/day/17) | Conway Cubes            | :star: :star: |
-| [18](https://adventofcode.com/2020/day/18) | Operation Order         |               |
+| [18](https://adventofcode.com/2020/day/18) | Operation Order         | :star:        |
 | [19](https://adventofcode.com/2020/day/19) | Monster Messages        |               |
 | [20](https://adventofcode.com/2020/day/20) | Jurassic Jigsaw         |               |
 | [21](https://adventofcode.com/2020/day/21) | Allergen Assessment     |               |

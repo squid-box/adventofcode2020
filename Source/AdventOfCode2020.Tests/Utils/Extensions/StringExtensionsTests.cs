@@ -15,6 +15,20 @@
             Assert.AreEqual(expectedResult, source.ToInt());
         }
 
+        [TestCase("0", 0)]
+        [TestCase("-10", -10)]
+        [TestCase("6000000000", 6000000000)]
+        public void Test(string source, long expectedResult)
+        {
+            Assert.AreEqual(expectedResult, source.ToLong());
+        }
+
+        [Test]
+        public void LongToInt_Throws()
+        {
+            Assert.Throws<OverflowException>(() => "6000000000".ToInt());
+        }
+
         [Test]
         public void BadString_Throws()
         {
