@@ -18,7 +18,7 @@
 | [14](https://adventofcode.com/2020/day/14) | Docking Data            | :star: :star: |
 | [15](https://adventofcode.com/2020/day/15) | Rambunctious Recitation | :star: :star: |
 | [16](https://adventofcode.com/2020/day/16) | Ticket Translation      | :star: :star: |
-| [17](https://adventofcode.com/2020/day/17) | Conway Cubes            | :star:        |
+| [17](https://adventofcode.com/2020/day/17) | Conway Cubes            | :star: :star: |
 | [18](https://adventofcode.com/2020/day/18) | Operation Order         |               |
 | [19](https://adventofcode.com/2020/day/19) | Monster Messages        |               |
 | [20](https://adventofcode.com/2020/day/20) | Jurassic Jigsaw         |               |

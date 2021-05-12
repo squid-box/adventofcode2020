@@ -37,11 +37,13 @@ namespace AdventOfCode2020.Problems
     {
         private readonly int _dimensions;
         private HashSet<Coordinate> _cubes;
+        private HashSet<Vector> _neighborVectors;
 
         public Space(IList<string> initialState, int dimensions)
         {
             _dimensions = dimensions;
             _cubes = new HashSet<Coordinate>();
+            _neighborVectors = GetNeighborDirections(dimensions);
 
             for (var y = 0; y < initialState.Count; y++)
             {
@@ -57,20 +59,20 @@ namespace AdventOfCode2020.Problems
 
         public int ActiveCubes => _cubes.Count;
 
-        public void Cycle()
+        public void Cycle(int cycles = 6)
         {
-            for (var n = 0; n < 6; n++)
+            for (var n = 0; n < cycles; n++)
             {
                 var newState = new HashSet<Coordinate>();
 
                 foreach (var coordinate in _cubes)
                 {
-                    var toCheck = GetNeighbors(coordinate, _dimensions).ToHashSet();
+                    var toCheck = GetNeighbors(coordinate);
                     toCheck.Add(coordinate);
 
                     foreach (var c in toCheck)
                     {
-                        var activeNeighbors = GetNeighbors(c, _dimensions).Count(coord => _cubes.Contains(coord));
+                        var activeNeighbors = GetNeighbors(c).Count(coord => _cubes.Contains(coord));
 
                         if (_cubes.Contains(c) && activeNeighbors.IsWithin(2, 3))
                         {
@@ -88,44 +90,52 @@ namespace AdventOfCode2020.Problems
             }
         }
 
-        private static IEnumerable<Coordinate> GetNeighbors(Coordinate coordinate, int dimensions)
+        private HashSet<Coordinate> GetNeighbors(Coordinate coord)
         {
-            var neighbors3d = new HashSet<Coordinate>
+            var result = new HashSet<Coordinate>();
+
+            foreach (var direction in _neighborVectors)
             {
-                coordinate + Vector.North,
-                coordinate + Vector.West,
-                coordinate + Vector.South,
-                coordinate + Vector.East,
-                coordinate + Vector.North + Vector.West,
-                coordinate + Vector.North + Vector.East,
-                coordinate + Vector.South + Vector.West,
-                coordinate + Vector.South + Vector.East,
+                result.Add(coord + direction);
+            }
 
-                coordinate + Vector.Up,
-                coordinate + Vector.Up + Vector.North,
-                coordinate + Vector.Up + Vector.West,
-                coordinate + Vector.Up + Vector.South,
-                coordinate + Vector.Up + Vector.East,
-                coordinate + Vector.Up + Vector.North + Vector.West,
-                coordinate + Vector.Up + Vector.North + Vector.East,
-                coordinate + Vector.Up + Vector.South + Vector.West,
-                coordinate + Vector.Up + Vector.South + Vector.East,
+            return result;
+        }
 
-                coordinate + Vector.Down,
-                coordinate + Vector.Down + Vector.North,
-                coordinate + Vector.Down + Vector.West,
-                coordinate + Vector.Down + Vector.South,
-                coordinate + Vector.Down + Vector.East,
-                coordinate + Vector.Down + Vector.North + Vector.West,
-                coordinate + Vector.Down + Vector.North + Vector.East,
-                coordinate + Vector.Down + Vector.South + Vector.West,
-                coordinate + Vector.Down + Vector.South + Vector.East,
-            };
+        private static HashSet<Vector> GetNeighborDirections(int dimensions)
+        {
+            var neighbors = new HashSet<Vector>();
 
-            var neighbors4d = new HashSet<Coordinate>(neighbors3d);
-            // TODO: should probably rewrite this code...
-
-            return dimensions == 3 ? neighbors3d : neighbors4d;
+            for (var x = -1; x <= 1; x++)
+            {
+                for (var y = -1; y <= 1; y++)
+                {
+                    for (var z = -1; z <= 1; z++)
+                    {
+                        if (dimensions == 4)
+                        {
+                            for (var w = -1; w <= 1; w++)
+                            {
+                                if (x == 0 && y == 0 && z == 0 && w == 0)
+                                {
+                                    continue;
+                                }
+                                neighbors.Add(new Vector(x, y, z, w));
+                            }
+                        }
+                        else
+                        {
+                            if (x == 0 && y == 0 && z == 0)
+                            {
+                                continue;
+                            }
+                            neighbors.Add(new Vector(x, y, z));
+                        }
+                    }
+                }
+            }
+            
+            return neighbors;
         }
     }
 }

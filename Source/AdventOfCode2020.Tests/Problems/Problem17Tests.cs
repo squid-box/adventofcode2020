@@ -30,11 +30,11 @@ namespace AdventOfCode2020.Tests.Problems
 
             Assert.AreEqual(5, space.ActiveCubes);
 
-            space.Cycle();
+            space.Cycle(1);
 
             Assert.AreEqual(11, space.ActiveCubes);
 
-            space.Cycle();
+            space.Cycle(1);
 
             Assert.AreEqual(21, space.ActiveCubes);
         }
@@ -46,11 +46,11 @@ namespace AdventOfCode2020.Tests.Problems
 
             Assert.AreEqual(5, space4d.ActiveCubes);
 
-            space4d.Cycle();
+            space4d.Cycle(1);
 
             Assert.AreEqual(29, space4d.ActiveCubes);
 
-            space4d.Cycle();
+            space4d.Cycle(1);
 
             Assert.AreEqual(60, space4d.ActiveCubes);
         }
