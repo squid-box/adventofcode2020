@@ -1,6 +1,5 @@
 namespace AdventOfCode2020.Problems
 {
-    using System;
     using System.Linq;
     using System.Text.RegularExpressions;
     using AdventOfCode2020.Utils.Extensions;
@@ -42,9 +41,19 @@ namespace AdventOfCode2020.Problems
                 expression = tempExpression;
             }
 
-            if (advanced && expression.Contains('+'))
+            while (advanced && expression.Contains('+'))
             {
-                // TODO: Advanced Math!
+                // Find the first addition statement.
+                var findAdditionParts = new Regex(@"\s*(?<entirePart>(?<leftSide>\d+)\s+\+{1}\s+(?<rightSide>\d+))\s*");
+                var match = findAdditionParts.Match(expression);
+
+                // Calculate its value.
+                var sum = match.Groups["leftSide"].Value.ToLong() + match.Groups["rightSide"].Value.ToLong();
+                
+                // Replace it (string.Replace causes issues of partial matches/multiple replacements).
+                var replaceStartIndex = expression.IndexOf(match.Groups["entirePart"].Value);
+                var replaceLength = match.Groups["entirePart"].Value.Length;
+                expression = expression.Remove(replaceStartIndex, replaceLength).Insert(replaceStartIndex, sum.ToString());
             }
 
             // Then evaluate the expression left-to-right.
@@ -55,7 +64,7 @@ namespace AdventOfCode2020.Problems
             for (var i = 1; i <= parts.Length - 2; i += 2)
             {
                 var operand = parts[i];
-                var value = parts[i + 1].ToInt();
+                var value = parts[i + 1].ToLong();
 
                 switch (operand)
                 {
