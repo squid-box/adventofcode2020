@@ -23,7 +23,7 @@
 | [19](https://adventofcode.com/2020/day/19) | Monster Messages        |               |
 | [20](https://adventofcode.com/2020/day/20) | Jurassic Jigsaw         |               |
 | [21](https://adventofcode.com/2020/day/21) | Allergen Assessment     |               |
-| [22](https://adventofcode.com/2020/day/22) | Crab Combat             |               |
+| [22](https://adventofcode.com/2020/day/22) | Crab Combat             | :star:        |
 | [23](https://adventofcode.com/2020/day/23) | Crab Cups               |               |
 | [24](https://adventofcode.com/2020/day/24) | Lobby Layout            |               |
 | [25](https://adventofcode.com/2020/day/25) | Combo Breaker           |               |

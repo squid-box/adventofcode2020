@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Extensions for integers.
+    /// Extensions for strings.
     /// </summary>
     public static class StringExtensions
     {
